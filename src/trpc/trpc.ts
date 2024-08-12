@@ -1,27 +1,25 @@
-import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
-import { initTRPC } from '@trpc/server';
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import { TRPCError, initTRPC } from '@trpc/server'
 
-const t = initTRPC.create();
-const middlware = t.middleware
+const t = initTRPC.create()
+const middleware = t.middleware
 
-const isAuth = middlware(async (opts:any)=>{
+const isAuth = middleware(async (opts) => {
+  const { getUser } = getKindeServerSession()
+  const user =await getUser()
 
-    const {getUser} = getKindeServerSession()
-    const user =await getUser()
+  if (!user || !user.id) {
+    throw new TRPCError({ code: 'UNAUTHORIZED' })
+  }
 
-    if(!user || !user.id){
-        return {success: false,code:"UNAUTHORIZED"}
-    }
-    // we are passing values to one middlere were to anothr 
-    return opts.next({
-        ctx:{
-            userId:user.id,
-            user,
-        }
-    })
+  return opts.next({
+    ctx: {
+      userId: user.id,
+      user,
+    },
+  })
 })
 
-export const router = t.router;
-export const publicProcedure = t.procedure;
+export const router = t.router
+export const publicProcedure = t.procedure
 export const privateProcedure = t.procedure.use(isAuth)
-// it when is used is private end point it make sure is user is authenticated

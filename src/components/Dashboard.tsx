@@ -10,16 +10,32 @@ import {
     Trash,
   } from 'lucide-react'
 import UploadButton from './UploadButton'
-
+import { getUserSubscriptionPlan } from '@/lib/stripe'
 import Skeleton from 'react-loading-skeleton'
 import { Button } from './ui/button'
+import { useState } from 'react'
+interface PageProps {
+  subscriptionPlan: Awaited<ReturnType<typeof getUserSubscriptionPlan>>
+}
+const Dashboard = ({subscriptionPlan}: PageProps) => {
 
-const Dashboard = () => {
-
+  const [currentlyDeletingFile, setCurrentlyDeletingFile] = useState<string | null>(null)
+  const utils = trpc.useContext()
   const {data:files,isLoading} = trpc.getUserFiles.useQuery()
   // console.log(files)
-
-  const {mutate : deleteFile} = trpc.deleteFile.useMutation()
+  const { mutate: deleteFile } =
+    trpc.deleteFile.useMutation({
+      onSuccess: () => {
+        utils.getUserFiles.invalidate()
+      },
+      onMutate({ id }) {
+        setCurrentlyDeletingFile(id)
+      },
+      onSettled() {
+        setCurrentlyDeletingFile(null)
+      },
+    })
+  // const {mutate : deleteFile} = trpc.deleteFile.useMutation()
   // console.log(deleteFile)
   return (
     <main className='mx-auto max-w-7xl md:p-10'>
@@ -28,8 +44,8 @@ const Dashboard = () => {
           My Files
         </h1>
 
-        <UploadButton />
-        {/* <UploadButton isSubscribed={subscriptionPlan.isSubscribed} /> */}
+        {/* <UploadButton /> */}
+        <UploadButton isSubscribed={subscriptionPlan.isSubscribed} />
 
 
       </div>
@@ -57,9 +73,6 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </Link>
-
-
-                
                 <div className='px-6 mt-4 grid grid-cols-3 place-items-center py-2 gap-6 text-xs text-zinc-500'>
                   <div className='flex items-center gap-2'>
                     <Plus className='h-4 w-4' />

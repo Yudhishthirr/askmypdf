@@ -15,7 +15,8 @@ export const appRouter = router({
         const {getUser} = getKindeServerSession()
         const user =await getUser()
         if(!user || !user.id){
-            return {success: false,code:"UNAUTHORIZED"}
+            // return {success: false,code:"UNAUTHORIZED"}
+            return {success: false}
         //   throw new TRPCError({code:"UNAUTHORIZED"})
         }
         await dbConnect();
@@ -31,24 +32,24 @@ export const appRouter = router({
             }); 
             await newUser.save(); 
             
-            if(newUser){
-               return { success: true }
-            }
+            
         }
-        else{
-            return { success: true }
-        }
+        
+        return { success: true }
+        
        
 
     }),
     // accepting ctx where we passed from miidlaee ware
+    // Dashboard componetns
     getUserFiles:privateProcedure.query(async ({ctx})=>{
-        const {userId,user} = ctx
+        const {userId} = ctx
+        // await dbConnect()
         // console.log(userId);
         return await FileModel.find({userId:userId})
         // return await 
     }),
-
+// chat wrapper
     getFileUploadStatus:privateProcedure
     .input(z.object({fileId:z.string()}))
     .query(async({ctx,input})=>{
@@ -60,6 +61,7 @@ export const appRouter = router({
         // const status = 
         return {status:file.uploadstatus}
     }),
+    // Upload Button 
     getFile:privateProcedure
         .input(z.object({key:z.string()}))
         .mutation(async({ctx,input})=>{
@@ -75,7 +77,7 @@ export const appRouter = router({
             return file
         }
     }),
-
+// Dashboard componetns
     deleteFile:privateProcedure.input(z.object({id:z.string()})
     ).mutation(async({ctx,input})=>{
 
@@ -135,6 +137,8 @@ export const appRouter = router({
         })
         return { url: stripeSession.url }
     }),
+
+    // Messages Chat Componets
     getFileMessages: privateProcedure
         .input(
             z.object({

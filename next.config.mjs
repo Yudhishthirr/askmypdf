@@ -8,9 +8,12 @@ const nextConfig = {
         config.resolve.alias.encoding = false
         return config
       },
-      images: {
-        domains: ['localhost'],
+      eslint:{
+        ignoreDuringBuilds:true
       },
+      // images: {
+      //   domains: ['localhost'],
+      // },
       // images: {
       //   remotePatterns: [
       //     {

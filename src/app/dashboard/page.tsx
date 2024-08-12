@@ -8,6 +8,7 @@ import { trpc } from '../_trpc/clinet'
 import { Loader2 } from 'lucide-react'
 import dbConnect from "@/db/dbConfig";
 import UserModel from "@/models/User";
+import { getUserSubscriptionPlan } from "@/lib/stripe";
 
 const page = async() => {
 
@@ -23,12 +24,8 @@ const page = async() => {
     if(!dbUser) redirect('/auth-callback?origin=dashboard')
 
 
-    
-    return (
-        <>
-        <Dashboard/>
-        </>
-    )
+    const subscriptionPlan = await getUserSubscriptionPlan()
+    return <Dashboard subscriptionPlan={subscriptionPlan} />
 }
 
 export default page
