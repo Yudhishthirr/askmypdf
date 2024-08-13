@@ -54,10 +54,10 @@ const Dashboard = ({subscriptionPlan}: PageProps) => {
       {files && files.length!==0 ? (
         <ul className='mt-8 grid grid-cols-1 gap-6 divide-y divide-zinc-200 md:grid-cols-2 lg:grid-cols-3'>
           {files
-          .sort((a,b)=>
+          .sort((a:any,b:any)=>
               new Date(b.createdAt).getTime() -new Date(a.createdAt).getTime()
           )
-          .map((file)=>(
+          .map((file:any)=>(
             <li  key={file?._id} className='col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow transition hover:shadow-lg'>
                <Link
                   href={`/dashboard/${file?._id}`}

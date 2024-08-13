@@ -157,7 +157,7 @@ export const appRouter = router({
 
 
 
-            const file = await MessageModel.findOne({fileId:fileId},{userId:userId})
+            const file = await FileModel.findOne({_id:fileId},{userId:userId})
             if (!file) throw new TRPCError({ code: 'NOT_FOUND' })
             
             const messages = await MessageModel

@@ -11,7 +11,7 @@ interface MessageProps {
 }
 
 const Message = forwardRef<HTMLDivElement, MessageProps>(
-  ({ message, isNextMessageSamePerson }, ref) => {
+  ({ message, isNextMessageSamePerson }:any, ref) => {
     return (
       <div
         ref={ref}
