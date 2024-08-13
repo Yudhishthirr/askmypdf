@@ -13,9 +13,11 @@ const Page = () => {
   const {data,isLoading} = trpc.authCallback.useQuery()
   
   if(data?.success == true){
-    router.push('/dashboard')
+    // router.push('/dashboard')
+    console.log("Your are register in mogodb know you are go to dashboard MESAAGE FROM AUTH-CALL-BACK")
   }else{
-    router.push('/api/auth/login?')
+    // router.push('/api/auth/login?')
+    console.log("you go to first kind login page becouse you are not in both in db or kind MESAAGE FROM AUTH-CALL-BACK")
   }
   return (
     <div className='w-full mt-24 flex justify-center'>
