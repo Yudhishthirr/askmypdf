@@ -8,8 +8,8 @@ import { trpc } from '../_trpc/clinet'
 const Page = () => {
   const router = useRouter()
 
-  const searchParams = useSearchParams()
-  const origin = searchParams.get('origin')
+  // const searchParams = useSearchParams()
+  // const origin = searchParams.get('origin')
   const {data,isLoading} = trpc.authCallback.useQuery()
   
   if(data?.success === false){
