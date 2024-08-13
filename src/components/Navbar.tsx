@@ -34,6 +34,7 @@ const Navbar = async() => {
             <>
               <Link
                 href='/pricing'
+                target='_blank'
                 className={buttonVariants({
                   variant: 'ghost',
                   size: 'sm',
@@ -59,6 +60,7 @@ const Navbar = async() => {
             <>
               <Link
                 href='/dashboard'
+                target='_blank'
                 className={buttonVariants({
                   variant: 'ghost',
                   size: 'sm',
@@ -67,6 +69,7 @@ const Navbar = async() => {
               </Link>
               <Link
                 href='/pricing'
+                target='_blank'
                 className={buttonVariants({
                   variant: 'ghost',
                   size: 'sm',
