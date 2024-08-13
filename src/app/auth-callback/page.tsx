@@ -12,10 +12,10 @@ const Page = () => {
   // const origin = searchParams.get('origin')
   const {data,isLoading} = trpc.authCallback.useQuery()
   
-  if(data?.success === false){
-    router.push('/api/auth/login?')
-  }else{
+  if(data?.success == true){
     router.push('/dashboard')
+  }else{
+    router.push('/api/auth/login?')
   }
   return (
     <div className='w-full mt-24 flex justify-center'>
