@@ -15,13 +15,13 @@ const page = async() => {
     const {getUser} = getKindeServerSession();
     const user = await getUser();
 
-    if (!user || !user.id) console.log("your are not login from kind plase go to auth call back to verify to your self by kind MESAAGE FROM DASHBOARD")//redirect('/auth-callback?origin=dashboard')
+    if (!user || !user.id) redirect("/auth-callback?origin=dashboard");//console.log("your are not login from kind plase go to auth call back to verify to your self by kind MESAAGE FROM DASHBOARD")//redirect('/auth-callback?origin=dashboard')
 
     await dbConnect();
 
     const dbUser = await UserModel.findOne({kindId:user?.id });
 
-    if(!dbUser) console.log("your are verify but not register in databse plase go to auth call back to register to your self by mogodb MESAAGE FROM DASHBOARD")//redirect('/auth-callback?origin=dashboard')
+    if(!dbUser) redirect("/auth-callback?origin=dashboard");//console.log("your are verify but not register in databse plase go to auth call back to register to your self by mogodb MESAAGE FROM DASHBOARD")//redirect('/auth-callback?origin=dashboard')
 
 
     const subscriptionPlan = await getUserSubscriptionPlan()
