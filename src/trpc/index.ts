@@ -44,7 +44,7 @@ export const appRouter = router({
     // Dashboard componetns
     getUserFiles:privateProcedure.query(async ({ctx})=>{
         const {userId} = ctx
-        // await dbConnect()
+        await dbConnect()
         // console.log(userId);
         return await FileModel.find({userId:userId})
         // return await 
