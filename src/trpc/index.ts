@@ -54,6 +54,7 @@ export const appRouter = router({
     .input(z.object({fileId:z.string()}))
     .query(async({ctx,input})=>{
         const {userId} = ctx
+        await dbConnect();
         const file = await FileModel.findOne({_id:input.fileId,userId:userId})
         
         if(!file) return {status:"PENDING" as const}
@@ -67,7 +68,7 @@ export const appRouter = router({
         .mutation(async({ctx,input})=>{
 
         const {userId} = ctx
-
+        await dbConnect();
         const file = await FileModel.findOne({key:input.key,userId:userId})
 
         if(!file){
@@ -82,7 +83,7 @@ export const appRouter = router({
     ).mutation(async({ctx,input})=>{
 
         const {userId} = ctx
-
+        await dbConnect();
         const file = await FileModel.findOne({_id:input.id,userId:userId})
         if(!file){
             return {success: false,code:"NOT_FOUND"}
@@ -156,7 +157,7 @@ export const appRouter = router({
             cursor: cursor ? { id: cursor } : undefined
 
 
-
+            await dbConnect();
             const file = await FileModel.findOne({_id:fileId},{userId:userId})
             if (!file) throw new TRPCError({ code: 'NOT_FOUND' })
             
