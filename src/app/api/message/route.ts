@@ -30,7 +30,7 @@ export const POST = async(req:NextRequest,res:NextResponse)=>{
     if(!userId) return new Response("Unauthorized",{status:401})
     
     const {fileId,message} = SendMessageValdator.parse(body)
-
+    await dbConnect();
     const file = await FileModel.findOne({_id:fileId,userId:userId})
 
     if(!file) return new Response("Not Foud",{status:401})
