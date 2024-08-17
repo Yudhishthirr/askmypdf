@@ -15,7 +15,7 @@ import { PromptTemplate } from "@langchain/core/prompts"
 
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
-
+import dbConnect from '@/db/dbConfig';
 
 export const POST = async(req:NextRequest,res:NextResponse)=>{
     // end point to ask questio to pdf
