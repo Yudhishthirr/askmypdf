@@ -13,6 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Chat with Your PDF - AI-Powered PDF Assistant",
+  image = "/chatpdf.png",
   description:
     "Interact with your PDF documents using our AI-powered assistant. Upload, chat, and get instant insights from your PDFs with ease.",
   keywords: [
