@@ -31,21 +31,19 @@ export const metadata: Metadata = {
     icon: "/f.png", // Path to your favicon
   },
 
-  // openGraph: {
-  //   title: "Chat with Your PDF - AI-Powered PDF Assistant",
-  //   description:
-  //     "Experience a new way of interacting with your documents. Our AI-powered tool allows you to chat with your PDFs and get instant answers.",
-  //   url: "https://www.yourdomain.com",
-  //   type: "website",
-  //   images: [
-  //     {
-  //       url: "https://www.yourdomain.com/og-image.png",
-  //       width: 1200,
-  //       height: 630,
-  //       alt: "Chat with Your PDF - AI-Powered PDF Assistant",
-  //     },
-  //   ],
-  // },
+   openGraph: {
+    title: "Chat with Your PDF - AI-Powered PDF Assistant",
+    description:
+      "Interact with your PDF documents using our AI-powered assistant. Upload, chat, and get instant insights from your PDFs with ease.",
+    images: [
+      {
+        url: "/chatpdf.png",
+        width: 800,
+        height: 600,
+        alt: "Chat with Your PDF",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
