@@ -3,7 +3,7 @@ import { trpc } from "@/app/_trpc/clinet"
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
 import { httpBatchLink } from "@trpc/client"
 import { PropsWithChildren, useState } from "react"
-//import { absoluteUrl } from '@/lib/utils'
+
 const Provider = ({children}:PropsWithChildren) => {
 
     const [queryClient] = useState(()=> new QueryClient())
@@ -11,7 +11,7 @@ const Provider = ({children}:PropsWithChildren) => {
         trpc.createClient({
             links:[
                 httpBatchLink({
-                    // url:absoluteUrl("/api/trpc"),
+                    
                     url:"https://www.askmypdf.in/api/trpc",
                 })
             ]
