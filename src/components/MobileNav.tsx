@@ -40,7 +40,7 @@ const MobileNav = ({ isAuth }: { isAuth: boolean }) => {
                       closeOnCurrent('/sign-up')
                     }
                     className='flex items-center w-full font-semibold text-green-600'
-                    href='/sign-up'>
+                    href='/api/auth/login?'>
                     Get started
                     <ArrowRight className='ml-2 h-5 w-5' />
                   </Link>
@@ -52,7 +52,7 @@ const MobileNav = ({ isAuth }: { isAuth: boolean }) => {
                       closeOnCurrent('/sign-in')
                     }
                     className='flex items-center w-full font-semibold'
-                    href='/sign-in'>
+                    href='/api/auth/login?'>
                     Sign in
                   </Link>
                 </li>
