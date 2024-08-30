@@ -37,7 +37,7 @@ export const metadata: Metadata = {
       "Interact with your PDF documents using our AI-powered assistant. Upload, chat, and get instant insights from your PDFs with ease.",
     images: [
       {
-        url: "/chatpdf.png",
+        url: "/myimage.jpg",
         width: 800,
         height: 600,
         alt: "Chat with Your PDF",
