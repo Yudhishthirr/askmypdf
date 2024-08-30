@@ -11,4 +11,4 @@ This platform allows users to interact and chat with their PDF documents seamles
 
 # Features
 ---
-`-` 🛠️ Complete SaaS Built From Scratch
+* 🛠️ Complete SaaS Built From Scratch
