@@ -5,7 +5,7 @@
 This platform allows users to interact and chat with their PDF documents seamlessly, leveraging cutting-edge technology to provide an intuitive and powerful experience.
 
 ---
-![Alt text](URL-to-image)
+![Alt text](public/myimage.jpg)
 
 ---
 
