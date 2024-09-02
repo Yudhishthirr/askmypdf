@@ -33,7 +33,7 @@ const UserSchema: Schema<User> = new mongoose.Schema({
   },
   stripeCustommerId: {
     type: String,
-    unique: true,
+    // unique: true,
   },
   stripeSubscriptionId: {
     type: String,
