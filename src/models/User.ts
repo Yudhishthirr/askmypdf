@@ -37,15 +37,15 @@ const UserSchema: Schema<User> = new mongoose.Schema({
   },
   stripeSubscriptionId: {
     type: String,
-    unique: true,
+    // unique: true,
   },
   stripePriceId: {
     type: String,
-    unique: true,
+    // unique: true,
   },
   stripeCurrentPeriodEnd:{
     type: Date,
-    unique:true
+    // unique:true
   },
   // file:[
   //   {
